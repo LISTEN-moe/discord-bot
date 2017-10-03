@@ -50,6 +50,7 @@ client.on('error', err => client.logger.error(oneLine`
 		`);
 	})
 	.once('ready', async () => {
+		client.websocketManager.connect();
 		for (const channel of RADIO_CHANNELS.split(',')) {
 			if (!client.channels.has(channel)) continue;
 			const voiceChannel = client.channels.get(channel);
@@ -136,7 +137,8 @@ client.registry
 	.registerDefaultTypes()
 	.registerGroups([
 		['anime', 'Anime'],
-		['blacklist', 'Blacklist']
+		['blacklist', 'Blacklist'],
+		['listen', 'Listen.moe']
 	])
 	.registerDefaultGroups()
 	.registerDefaultCommands({ ping: false, help: false })

@@ -1,4 +1,4 @@
-const Websocket = require('uws');
+const Websocket = require('ws');
 
 class WebsocketManager {
 	constructor(client) {
