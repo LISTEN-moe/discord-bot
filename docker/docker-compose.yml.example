@@ -1,0 +1,25 @@
+version: '3'
+services:
+  listen:
+    image: "crawl/listen:latest"
+    restart: always
+    env_file:
+      - ../.env
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: "postgres:9-alpine"
+    restart: always
+    environment:
+      - POSTGRES_USER=YOUR_POSTGRES_USER
+      - POSTGRES_PASSWORD=YOUR_POSTGRES_PASSWORD
+    volumes:
+      - LOCALHOST_VOLUME_PATH/postgresql/data:/var/lib/postgresql/data
+
+  redis:
+    image: "redis:4-alpine"
+    restart: always
+    volumes:
+      - LOCALHOST_VOLUME_PATH/redis/data:/data

@@ -1,0 +1,40 @@
+# Packages
+node_modules/
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# IDE
+.vscode/
+
+# Docker (experimental)
+docker/
+Dockerfile
+.dockerignore
+
+# Authentication
+.env
+
+# Test files
+
+# Miscellaneous
+.tmp/
+LICENSE
+README.md
+
+# Git
+.github
+.git
+.gitattributes
+.gitignore
+
+# Deployment
+deploy/
+.travis.yml
