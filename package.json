@@ -1,6 +1,7 @@
 {
   "name": "discord-bot",
   "version": "0.1.0",
+  "private": true,
   "description": "The official Listen.moe discord bot",
   "main": "src/Listen.js",
   "author": {
@@ -38,7 +39,7 @@
     "pg": "^6.4.2",
     "pino": "^4.7.2",
     "prism-media": "github:hydrabolt/prism-media",
-    "sequelize": "^4.13.2",
+    "sequelize": "^4.13.4",
     "uws": "^8.14.1"
   },
   "devDependencies": {
