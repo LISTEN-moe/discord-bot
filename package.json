@@ -13,7 +13,8 @@
     "test": "npm run lint",
     "lint": "eslint src",
     "dev": "env-cmd ./.env node --trace-warnings sharder.js",
-    "dev:docker": "cd docker/ && docker-compose -f docker-compose.development.yml up -d --build --no-deps"
+    "dev:docker": "cd docker/ && docker-compose -f docker-compose.development.yml up -d --build --no-deps",
+    "start": "env-cmd ./.env node sharder.js"
   },
   "repository": {
     "type": "git",
