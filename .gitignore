@@ -33,4 +33,4 @@ docker/redis
 .github/
 .travis.yml
 deploy/deploy.sh
-LICENSE
+src/data/sqlite/listen.db

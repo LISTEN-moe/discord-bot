@@ -28,7 +28,7 @@ class ListenClient extends CommandoClient {
 		this.websocketManager = new WebsocketManager(this);
 		this.voiceManager = null;
 
-		/* Database.start(); */
+		Database.start();
 		playBroadcast(this);
 
 		function playBroadcast(client) {
