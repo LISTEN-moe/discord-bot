@@ -12,7 +12,7 @@
   "scripts": {
     "test": "npm run lint",
     "lint": "eslint src",
-    "dev": "env-cmd ./.env node --trace-warnings src/Listen.js",
+    "dev": "env-cmd ./.env node --trace-warnings sharder.js",
     "dev:docker": "cd docker/ && docker-compose -f docker-compose.development.yml up -d --build --no-deps"
   },
   "repository": {
@@ -29,22 +29,22 @@
   ],
   "homepage": "https://github.com/LISTEN-moe/discord-bot#readme",
   "dependencies": {
-    "discord.js": "github:hydrabolt/discord.js",
+    "discord.js": "github:hydrabolt/discord.js#voice-rewrite",
     "discord.js-commando": "github:gawdl3y/discord.js-commando",
     "erlpack": "github:discordapp/erlpack",
-    "kitsu.js": "^2.0.0",
     "moment": "^2.18.1",
     "moment-duration-format": "^1.3.0",
     "node-opus": "^0.2.7",
     "pg": "^6.4.2",
-    "pino": "^4.7.2",
-    "prism-media": "github:hydrabolt/prism-media",
-    "sequelize": "^4.13.4",
-    "uws": "^8.14.1"
+    "pino": "^4.9.0",
+    "prism-media": "github:hydrabolt/prism-media#indev",
+    "sequelize": "^4.22.5",
+    "uws": "^8.14.1",
+    "zlib-sync": "^0.1.3"
   },
   "devDependencies": {
     "env-cmd": "^7.0.0",
-    "eslint": "^4.8.0",
+    "eslint": "^4.10.0",
     "eslint-config-aqua": "^2.0.1",
     "sqlite3": "^3.1.13"
   },

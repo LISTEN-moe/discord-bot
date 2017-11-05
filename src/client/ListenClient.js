@@ -3,8 +3,6 @@ const { WebhookClient } = require('discord.js');
 const Logger = require('../logger/Logger');
 const WebsocketManager = require('../websocket/WebsocketManager');
 const VoiceManager = require('../voice/VoiceManager');
-const https = require('https');
-const { version } = require('../../package.json');
 
 if (process.env.NODE_ENV === 'production') {
 	var Database = require('../data/psql/PostgreSQL');
@@ -31,36 +29,18 @@ class ListenClient extends CommandoClient {
 		this.voiceManager = null;
 
 		/* Database.start(); */
-		getStream()
-			.then(res => {
-				const broadcast = this.createVoiceBroadcast();
-				broadcast.playStream(res)
-					.on('error', this.logger.error);
-				this.voiceManager = new VoiceManager(this, broadcast);
-			})
-			.catch(err => {
-				this.logger.error(err);
-				this.voiceManager.broadcast.destroy();
-				setTimeout(getStream(options.stream), 5000);
-			});
-	}
-}
+		playBroadcast(this);
 
-function getStream() {
-	const options = {
-		hostname: 'listen.moe',
-		port: '',
-		path: '/stream',
-		method: 'GET',
-		headers: { 'User-Agent': `Listen.moe Official Discord Bot v${version} (https://github.com/LISTEN-moe/discord-bot)` }
-	};
-	return new Promise((resolve, reject) => {
-		https.get(options, res => resolve(res))
-			.on('error', err => {
-				console.error(err); // eslint-disable-line no-console
-				return reject(new Error('error in stream'));
-			});
-	});
+		function playBroadcast(client) {
+			const broadcast = client.createVoiceBroadcast();
+			broadcast.playArbitraryInput('async:https://listen.moe/stream')
+				.on('error', err => {
+					client.logger.error(err);
+					playBroadcast(client);
+				});
+			client.voiceManager = new VoiceManager(client, broadcast);
+		}
+	}
 }
 
 module.exports = ListenClient;

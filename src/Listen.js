@@ -9,7 +9,6 @@ const {
 	DISCORD_WEBHOOK_ID,
 	DISCORD_WEBHOOK_TOKEN,
 	RADIO_CHANNELS,
-	TOKEN,
 	WEBSOCKET
 } = require(`./util/constants.${process.env.NODE_ENV || 'development'}`);
 const ListenClient = require('./client/ListenClient');
@@ -136,7 +135,6 @@ client.on('error', err => client.logger.error(oneLine`
 client.registry
 	.registerDefaultTypes()
 	.registerGroups([
-		['anime', 'Anime'],
 		['blacklist', 'Blacklist'],
 		['listen', 'Listen.moe']
 	])
@@ -144,7 +142,7 @@ client.registry
 	.registerDefaultCommands({ ping: false, help: false })
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.login(TOKEN);
+client.login();
 
 process.on('unhandledRejection', err => client.logger.error(oneLine`
 	[TOHRU]
