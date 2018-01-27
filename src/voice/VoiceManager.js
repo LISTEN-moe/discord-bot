@@ -7,7 +7,7 @@ class VoiceManager {
 	async joinVoice(channel) {
 		try {
 			const connection = await channel.join();
-			connection.playBroadcast(this.broadcast)
+			connection.play(this.broadcast)
 				.on('error', err => {
 					this.client.logger.error(err);
 					connection.disconnect();

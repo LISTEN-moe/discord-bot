@@ -25,13 +25,13 @@ module.exports = class NowPlayingCommand extends ListenCommand {
 		}
 		const { radioInfo } = this.client;
 		const nowplaying = `${radioInfo.artistName ? `${radioInfo.artistName} - ` : ''}${radioInfo.songName}`;
-		const anime = radioInfo.animeName ? `Source: ${radioInfo.animeName}` : '';
-		const requestedBy = radioInfo.requestedBy
-			? /\s/g.test(radioInfo.requestedBy)
-				? `🎉 **${Util.escapeMarkdown(radioInfo.requestedBy)}** 🎉`
-				: `Requested by: ${Util.escapeMarkdown(radioInfo.requestedBy)}` // eslint-disable-line max-len
+		const anime = radioInfo.sourceName ? `Source: ${radioInfo.sourceName}` : '';
+		const requestedBy = radioInfo.event
+			? `🎉 **${Util.escapeMarkdown(radioInfo.eventName)}** 🎉`
+			: radioInfo.requestedBy
+			? `Requested by: ${Util.escapeMarkdown(radioInfo.requestedBy)}` // eslint-disable-line max-len
 			: '';
-		const ifAnime = radioInfo.animeName ? '\n' : '';
+		const ifAnime = radioInfo.sourceName ? '\n' : '';
 		const song = `${Util.escapeMarkdown(nowplaying)}\n${ifAnime}${Util.escapeMarkdown(anime)}\n${requestedBy}`;
 
 		return msg.channel.send({

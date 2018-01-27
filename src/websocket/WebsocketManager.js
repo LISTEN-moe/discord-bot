@@ -62,15 +62,18 @@ class WebsocketManager {
 			this.client.radioInfo = {
 				songName: response.d.song.title,
 				artistName: artists,
-				animeName: source,
+				sourceName: source,
 				listeners: response.d.listeners,
-				requestedBy: requester
+				requestedBy: requester,
+				event: false,
+				eventName: null
 			};
 			this.currentSongGame();
 		}
 	}
 
 	onClose() {
+		clearInterval(this.sendHeartbeat);
 		setTimeout(this.connect.bind(this), 5000);
 	}
 

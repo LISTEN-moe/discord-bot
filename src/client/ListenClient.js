@@ -33,7 +33,7 @@ class ListenClient extends CommandoClient {
 
 		function playBroadcast(client) {
 			const broadcast = client.createVoiceBroadcast();
-			broadcast.playArbitraryInput('async:https://listen.moe/stream')
+			broadcast.play('async:https://listen.moe/opus')
 				.on('error', err => {
 					client.logger.error(err);
 					playBroadcast(client);
