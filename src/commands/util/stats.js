@@ -38,7 +38,7 @@ module.exports = class StatsCommand extends ListenCommand {
 			.addField('❯ Library',
 				'[discord.js](https://discord.js.org)[-commando](https://github.com/Gawdl3y/discord.js-commando)', true)
 			.setThumbnail(this.client.user.displayAvatarURL())
-			.setFooter('© 2017 Crawl#2424');
+			.setFooter('© 2017 Crawl#0002');
 
 		return msg.say(embed);
 	}
