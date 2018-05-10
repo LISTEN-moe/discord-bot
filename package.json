@@ -1,60 +1,57 @@
 {
-  "name": "discord-bot",
-  "version": "0.1.0",
-  "private": true,
-  "description": "The official Listen.moe discord bot",
-  "main": "src/Listen.js",
-  "author": {
-    "name": "iCrawl",
-    "email": "icrawltogo@gmail.com"
-  },
-  "license": "MIT",
-  "scripts": {
-    "test": "npm run lint",
-    "lint": "eslint src",
-    "dev": "env-cmd ./.env node --trace-warnings sharder.js",
-    "dev:docker": "cd docker/ && docker-compose -f docker-compose.development.yml up -d --build --no-deps",
-    "start": "env-cmd ./.env node sharder.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LISTEN-moe/discord-bot.git"
-  },
-  "bugs": {
-    "url": "https://github.com/LISTEN-moe/discord-bot/issues"
-  },
-  "keywords": [
-    "discord",
-    "bot",
-    "listen-moe"
-  ],
-  "homepage": "https://github.com/LISTEN-moe/discord-bot#readme",
-  "dependencies": {
-    "discord.js": "hydrabolt/discord.js",
-    "discord.js-commando": "gawdl3y/discord.js-commando#custom-message",
-    "erlpack": "discordapp/erlpack",
-    "moment": "^2.20.1",
-    "moment-duration-format": "^2.2.1",
-    "node-opus": "^0.2.7",
-    "pg": "^6.4.2",
-    "pino": "^4.10.3",
-    "sequelize": "^4.32.2",
-    "uws": "^9.14.0",
-    "zlib-sync": "^0.1.4"
-  },
-  "devDependencies": {
-    "env-cmd": "^7.0.0",
-    "eslint": "^4.16.0",
-    "eslint-config-aqua": "^2.0.1",
-    "sqlite3": "^3.1.13"
-  },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "eslintConfig": {
-    "extends": "aqua",
-    "rules": {
-      "no-process-env": "off"
-    }
-  }
+	"name": "discord-bot",
+	"version": "0.1.0",
+	"private": true,
+	"description": "The official Listen.moe discord bot",
+	"main": "src/Listen.js",
+	"author": {
+		"name": "iCrawl",
+		"email": "icrawltogo@gmail.com"
+	},
+	"license": "MIT",
+	"scripts": {
+		"test": "npm run lint",
+		"lint": "eslint src",
+		"dev": "env-cmd ./.env node --trace-warnings sharder.js",
+		"dev:docker": "cd docker/ && docker-compose -f docker-compose.development.yml up -d --build --no-deps",
+		"start": "env-cmd ./.env node sharder.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/LISTEN-moe/discord-bot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/LISTEN-moe/discord-bot/issues"
+	},
+	"keywords": [
+		"discord",
+		"bot",
+		"listen-moe"
+	],
+	"homepage": "https://github.com/LISTEN-moe/discord-bot#readme",
+	"dependencies": {
+		"discord.js": "hydrabolt/discord.js",
+		"discord.js-commando": "gawdl3y/discord.js-commando#custom-message",
+		"erlpack": "discordapp/erlpack",
+		"moment": "^2.22.1",
+		"moment-duration-format": "^2.2.2",
+		"node-opus": "^0.3.0",
+		"pg": "^6.4.2",
+		"pino": "^4.16.1",
+		"sequelize": "^4.37.7",
+		"uws": "^9.14.0",
+		"zlib-sync": "^0.1.4"
+	},
+	"devDependencies": {
+		"env-cmd": "^7.0.0",
+		"eslint": "^4.19.1",
+		"eslint-config-aqua": "^4.0.0",
+		"sqlite3": "^4.0.0"
+	},
+	"engines": {
+		"node": ">=8.0.0"
+	},
+	"eslintConfig": {
+		"extends": "aqua"
+	}
 }
