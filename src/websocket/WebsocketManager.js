@@ -44,9 +44,19 @@ class WebsocketManager {
 		if (response.op === 1) {
 			if (response.t !== 'TRACK_UPDATE' && response.t !== 'TRACK_UPDATE_REQUEST') return;
 
+			let artist = null;
+			if (response.d.song.artists.length) {
+				artist = response.d.song.artists.map(elem => elem.nameRomaji || elem.name).join(', ');
+			}
+
 			let artists = null;
 			if (response.d.song.artists.length) {
-				artists = response.d.song.artists.map(elem => elem.nameRomaji || elem.name).join(', ');
+				artists = response.d.song.artists.map(elem => {
+					if (elem.nameRomaji) {
+						return `[${elem.nameRomaji}](https://listen.moe/music/artists/${elem.id})`;
+					}
+					return `[${elem.name}](https://listen.moe/music/artists/${elem.id})`;
+				}).join(', ');
 			}
 
 			let requester = '';
@@ -59,10 +69,23 @@ class WebsocketManager {
 				source = response.d.song.sources[0].nameRomaji || response.d.song.sources[0].name;
 			}
 
+			let album = '';
+			if (response.d.song.albums && response.d.song.albums.length > 0) {
+				album = `[${response.d.song.albums[0].name}](https://listen.moe/music/albums/${response.d.song.albums[0].id})`;
+			}
+
+			let cover = 'https://listen.moe/public/images/icons/android-chrome-192x192.png';
+			if (response.d.song.albums && response.d.song.albums.length > 0 && response.d.song.albums.image !== null) {
+				cover = `https://cdn.listen.moe/covers/${response.d.song.albums[0].image}`;
+			}
+
 			this.client.radioInfo = {
 				songName: response.d.song.title,
-				artistName: artists,
+				artistName: artist,
+				artistList: artists,
 				sourceName: source,
+				albumName: album,
+				albumCover: cover,
 				listeners: response.d.listeners,
 				requestedBy: requester,
 				event: false,

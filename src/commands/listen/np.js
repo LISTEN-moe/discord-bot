@@ -24,19 +24,24 @@ module.exports = class NowPlayingCommand extends ListenCommand {
 			}
 		}
 		const { radioInfo } = this.client;
-		const nowplaying = `${radioInfo.artistName ? `${radioInfo.artistName} - ` : ''}${radioInfo.songName}`;
-		const anime = radioInfo.sourceName ? `Source: ${radioInfo.sourceName}` : '';
+		const name = `**Name**: ${Util.escapeMarkdown(radioInfo.songName)}`;
+		const artists = `**Artists**: ${Util.escapeMarkdown(radioInfo.artistList)}`;
+		const anime = radioInfo.sourceName ? `**Source**: ${Util.escapeMarkdown(radioInfo.sourceName)}` : '';
+		const album = radioInfo.albumName ? `**Album**: ${Util.escapeMarkdown(radioInfo.albumName)}` : '';
 		const requestedBy = radioInfo.event
 			? `🎉 **${Util.escapeMarkdown(radioInfo.eventName)}** 🎉`
 			: radioInfo.requestedBy
 			? `Requested by: ${Util.escapeMarkdown(radioInfo.requestedBy)}` // eslint-disable-line max-len
 			: '';
+		const ifAlbum = radioInfo.albumName ? '\n' : '';
 		const ifAnime = radioInfo.sourceName ? '\n' : '';
-		const song = `${Util.escapeMarkdown(nowplaying)}\n${ifAnime}${Util.escapeMarkdown(anime)}\n${requestedBy}`;
+		const ifRequest = requestedBy ? '\n\n' : '';
+		const song = `${name}\n${artists}${ifAlbum}${album}${ifAnime}${anime}${ifRequest}${requestedBy}`;
 
 		return msg.channel.send({
 			embed: {
 				color: 15473237,
+				thumbnail: { url: radioInfo.albumCover },
 				fields: [
 					{
 						name: 'Now playing',
