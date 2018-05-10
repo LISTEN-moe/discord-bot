@@ -75,7 +75,7 @@ class WebsocketManager {
 			}
 
 			let cover = 'https://listen.moe/public/images/icons/android-chrome-192x192.png';
-			if (response.d.song.albums && response.d.song.albums.length > 0 && response.d.song.albums.image !== null) {
+			if (response.d.song.albums && response.d.song.albums.length > 0 && response.d.song.albums[0].image) {
 				cover = `https://cdn.listen.moe/covers/${response.d.song.albums[0].image}`;
 			}
 
@@ -83,6 +83,7 @@ class WebsocketManager {
 				songName: response.d.song.title,
 				artistName: artist,
 				artistList: artists,
+				artistCount: response.d.song.artists.length,
 				sourceName: source,
 				albumName: album,
 				albumCover: cover,

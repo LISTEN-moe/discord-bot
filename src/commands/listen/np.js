@@ -25,7 +25,7 @@ module.exports = class NowPlayingCommand extends ListenCommand {
 		}
 		const { radioInfo } = this.client;
 		const name = `**Name**: ${Util.escapeMarkdown(radioInfo.songName)}`;
-		const artists = `**Artists**: ${Util.escapeMarkdown(radioInfo.artistList)}`;
+		const artists = `${radioInfo.artistCount > 1 ? '**Artists**' : '**Artist**'}: ${Util.escapeMarkdown(radioInfo.artistList)}`;
 		const anime = radioInfo.sourceName ? `**Source**: ${Util.escapeMarkdown(radioInfo.sourceName)}` : '';
 		const album = radioInfo.albumName ? `**Album**: ${Util.escapeMarkdown(radioInfo.albumName)}` : '';
 		const requestedBy = radioInfo.event
