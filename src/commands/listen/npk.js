@@ -37,11 +37,12 @@ module.exports = class NowPlayingKPOPCommand extends ListenCommand {
 		const ifAnime = radioInfoKpop.sourceName ? '\n' : '';
 		const ifRequest = requestedBy ? '\n\n' : '';
 		const song = `${name}\n${artists}${ifAlbum}${album}${ifAnime}${anime}${ifRequest}${requestedBy}`;
+		const cover = radioInfoKpop.event ? radioInfoKpop.eventCover : radioInfoKpop.albumCover;
 
 		return msg.channel.send({
 			embed: {
-				color: 15473237,
-				thumbnail: { url: radioInfoKpop.albumCover },
+				color: 3189229,
+				thumbnail: { url: cover },
 				fields: [
 					{
 						name: 'Now playing',
