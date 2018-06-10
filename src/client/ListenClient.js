@@ -26,8 +26,8 @@ class ListenClient extends CommandoClient {
 			);
 		}
 		this.logger = new Logger();
-		this.websocketManager = new WebsocketManager(this, this.options.websocket);
-		this.websocketManagerKpop = new WebsocketManager(this, this.options.websocketKpop);
+		this.websocketManager = new WebsocketManager(this, this.options.websocket, 'jpop');
+		this.websocketManagerKpop = new WebsocketManager(this, this.options.websocketKpop, 'kpop');
 		this.voiceManager = null;
 
 		Database.start();

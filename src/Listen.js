@@ -52,6 +52,7 @@ client.on('error', err => client.logger.error(oneLine`
 	})
 	.once('ready', async () => {
 		client.websocketManager.connect();
+		client.websocketManagerKpop.connect();
 		for (const channel of RADIO_CHANNELS.split(',')) {
 			if (!client.channels.has(channel)) continue;
 			const voiceChannel = client.channels.get(channel);
