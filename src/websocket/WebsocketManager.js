@@ -83,9 +83,11 @@ class WebsocketManager {
 
 			let event = false;
 			let eventName = null;
+			let eventCover = null;
 			if (response.d.event) {
 				event = true;
 				eventName = response.d.event.name;
+				eventCover = response.d.event.image;
 			}
 
 			if (this.type === 'kpop') {
@@ -99,8 +101,9 @@ class WebsocketManager {
 					albumCover: cover,
 					listeners: response.d.listeners,
 					requestedBy: requester,
-					event: false,
-					eventName: null
+					event,
+					eventName,
+					eventCover
 				};
 			} else {
 				this.client.radioInfo = {
@@ -114,7 +117,8 @@ class WebsocketManager {
 					listeners: response.d.listeners,
 					requestedBy: requester,
 					event,
-					eventName
+					eventName,
+					eventCover
 				};
 			}
 

@@ -37,11 +37,12 @@ module.exports = class NowPlayingCommand extends ListenCommand {
 		const ifAnime = radioInfo.sourceName ? '\n' : '';
 		const ifRequest = requestedBy ? '\n\n' : '';
 		const song = `${name}\n${artists}${ifAlbum}${album}${ifAnime}${anime}${ifRequest}${requestedBy}`;
+		const cover = radioInfo.event ? radioInfo.eventCover : radioInfo.albumCover;
 
 		return msg.channel.send({
 			embed: {
 				color: 15473237,
-				thumbnail: { url: radioInfo.albumCover },
+				thumbnail: { url: cover },
 				fields: [
 					{
 						name: 'Now playing',
