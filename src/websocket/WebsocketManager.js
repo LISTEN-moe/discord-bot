@@ -81,6 +81,13 @@ class WebsocketManager {
 				cover = `https://cdn.listen.moe/covers/${response.d.song.albums[0].image}`;
 			}
 
+			let event = false;
+			let eventName = null;
+			if (response.d.event) {
+				event = true;
+				eventName = response.d.event.name;
+			}
+
 			if (this.type === 'kpop') {
 				this.client.radioInfoKpop = {
 					songName: response.d.song.title,
@@ -106,11 +113,11 @@ class WebsocketManager {
 					albumCover: cover,
 					listeners: response.d.listeners,
 					requestedBy: requester,
-					event: false,
-					eventName: null
+					event,
+					eventName
 				};
 			}
-			
+
 			this.currentSongGame();
 		}
 	}
