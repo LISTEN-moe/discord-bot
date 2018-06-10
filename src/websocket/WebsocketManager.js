@@ -1,8 +1,10 @@
 const Websocket = require('ws');
 
 class WebsocketManager {
-	constructor(client) {
+	constructor(client, url, type) {
 		this.client = client;
+		this.url = url;
+		this.type = type;
 		this.ws = null;
 		this.sendHeartbeat = null;
 	}
@@ -10,7 +12,7 @@ class WebsocketManager {
 	connect() {
 		if (this.ws) this.ws.removeAllListeners();
 		try {
-			this.ws = new Websocket(this.client.options.websocket);
+			this.ws = new Websocket(this.url);
 		} catch (error) {
 			setTimeout(this.connect.bind(this), 5000);
 		}
@@ -79,19 +81,36 @@ class WebsocketManager {
 				cover = `https://cdn.listen.moe/covers/${response.d.song.albums[0].image}`;
 			}
 
-			this.client.radioInfo = {
-				songName: response.d.song.title,
-				artistName: artist,
-				artistList: artists,
-				artistCount: response.d.song.artists.length,
-				sourceName: source,
-				albumName: album,
-				albumCover: cover,
-				listeners: response.d.listeners,
-				requestedBy: requester,
-				event: false,
-				eventName: null
-			};
+			if (this.type === 'kpop') {
+				this.client.radioInfoKpop = {
+					songName: response.d.song.title,
+					artistName: artist,
+					artistList: artists,
+					artistCount: response.d.song.artists.length,
+					sourceName: source,
+					albumName: album,
+					albumCover: cover,
+					listeners: response.d.listeners,
+					requestedBy: requester,
+					event: false,
+					eventName: null
+				};
+			} else {
+				this.client.radioInfo = {
+					songName: response.d.song.title,
+					artistName: artist,
+					artistList: artists,
+					artistCount: response.d.song.artists.length,
+					sourceName: source,
+					albumName: album,
+					albumCover: cover,
+					listeners: response.d.listeners,
+					requestedBy: requester,
+					event: false,
+					eventName: null
+				};
+			}
+			
 			this.currentSongGame();
 		}
 	}
@@ -102,6 +121,7 @@ class WebsocketManager {
 	}
 
 	currentSongGame() {
+		if (this.type === 'kpop') return;
 		let game = 'Loading data...';
 		if (Object.keys(this.client.radioInfo).length) {
 			game = `${this.client.radioInfo.artistName} - ${this.client.radioInfo.songName}`;

@@ -8,6 +8,7 @@ exports.DISCORD_BOT_INVITE = Constants.DISCORD_BOT_INVITE;
 exports.TOKEN = Constants.TOKEN;
 exports.PAGINATED_ITEMS = Constants.PAGINATED_ITEMS;
 exports.WEBSOCKET = Constants.WEBSOCKET;
+exports.WEBSOCKET_KPOP = Constants.WEBSOCKET_KPOP;
 
 /* Databases */
 exports.DB = Constants.DB;

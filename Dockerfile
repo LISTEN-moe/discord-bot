@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:9-alpine
 
 LABEL name "Listen"
 LABEL version "0.1.0"

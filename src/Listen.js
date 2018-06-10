@@ -9,7 +9,8 @@ const {
 	DISCORD_WEBHOOK_ID,
 	DISCORD_WEBHOOK_TOKEN,
 	RADIO_CHANNELS,
-	WEBSOCKET
+	WEBSOCKET,
+	WEBSOCKET_KPOP
 } = require(`./util/constants.${process.env.NODE_ENV || 'development'}`);
 const ListenClient = require('./client/ListenClient');
 
@@ -21,6 +22,7 @@ const client = new ListenClient({
 	webhookID: DISCORD_WEBHOOK_ID,
 	webhookToken: DISCORD_WEBHOOK_TOKEN,
 	websocket: WEBSOCKET,
+	websocketKpop: WEBSOCKET_KPOP,
 	messageCacheMaxSize: 100,
 	messageCacheLifeTime: 30,
 	messageSweepInterval: 30,

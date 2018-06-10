@@ -15,6 +15,7 @@ class ListenClient extends CommandoClient {
 	constructor(options) {
 		super(options);
 		this.radioInfo = {};
+		this.radioInfoKpop = {};
 		this.database = Database ? Database.db : null;
 		this.redis = Redis ? Redis.db : null;
 		if (options.webhookID && options.webhookToken) {
@@ -25,7 +26,8 @@ class ListenClient extends CommandoClient {
 			);
 		}
 		this.logger = new Logger();
-		this.websocketManager = new WebsocketManager(this);
+		this.websocketManager = new WebsocketManager(this, this.options.websocket);
+		this.websocketManagerKpop = new WebsocketManager(this, this.options.websocketKpop);
 		this.voiceManager = null;
 
 		Database.start();
@@ -35,6 +37,10 @@ class ListenClient extends CommandoClient {
 			const broadcast = client.createVoiceBroadcast();
 			broadcast.play('async:https://listen.moe/opus')
 				.on('error', err => {
+					client.logger.error(err);
+					playBroadcast(client);
+				})
+				.on('end', () => {
 					client.logger.error(err);
 					playBroadcast(client);
 				});
