@@ -16,6 +16,8 @@ declare module 'discord-akairo' {
 		config: ListenOptions;
 		radioInfo: RadioInfo;
 		radioInfoKpop: RadioInfoKpop;
+		webSocketManager: WebSocketManager;
+		webSocketManagerKpop: WebSocketManager;
 	}
 }
 
@@ -145,9 +147,6 @@ export default class ListenClient extends AkairoClient {
 		await this.db.connect();
 		this.settings = new TypeORMProvider(this.db.getRepository(Setting));
 		await this.settings.init();
-
-		this.webSocketManager.connect();
-		this.webSocketManagerKpop.connect();
 	}
 
 	public async start() {

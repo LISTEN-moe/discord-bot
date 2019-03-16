@@ -11,5 +11,7 @@ export default class ReadyListener extends Listener {
 
 	public async exec() {
 		this.client.logger.info(`[READY] ${this.client.user!.tag} (${this.client.user!.id})`);
+		this.client.webSocketManager.connect();
+		this.client.webSocketManagerKpop.connect();
 	}
 }
