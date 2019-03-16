@@ -4,7 +4,7 @@ import { Message, MessageEmbed, Util } from 'discord.js';
 export default class NowPlayingCommand extends Command {
 	public constructor() {
 		super('np', {
-			aliases: ['np', 'now-playing', 'nowplaying'],
+			aliases: ['np', 'now-playing'],
 			description: {
 				content: 'Display the currently playing song.'
 			},
