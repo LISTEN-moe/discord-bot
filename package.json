@@ -1,20 +1,15 @@
 {
 	"name": "discord-bot",
 	"version": "0.1.0",
-	"private": true,
 	"description": "The official Listen.moe discord bot",
-	"main": "src/Listen.js",
-	"author": {
-		"name": "iCrawl",
-		"email": "icrawltogo@gmail.com"
-	},
+	"main": "src/listen.js",
+	"author": "iCrawl <icrawltogo@gmail.com>",
 	"license": "MIT",
+	"private": true,
 	"scripts": {
-		"test": "npm run lint",
-		"lint": "eslint src",
-		"dev": "env-cmd ./.env node --trace-warnings sharder.js",
-		"dev:docker": "cd docker/ && docker-compose -f docker-compose.development.yml up -d --build --no-deps",
-		"start": "env-cmd ./.env node sharder.js"
+		"prebuild": "yarn lint",
+		"build": "gulp",
+		"lint": "tslint -p tsconfig.json"
 	},
 	"repository": {
 		"type": "git",
@@ -30,28 +25,37 @@
 	],
 	"homepage": "https://github.com/LISTEN-moe/discord-bot#readme",
 	"dependencies": {
-		"discord.js": "hydrabolt/discord.js",
-		"discord.js-commando": "gawdl3y/discord.js-commando#custom-message",
-		"erlpack": "discordapp/erlpack",
-		"moment": "^2.22.1",
+		"common-tags": "^1.8.0",
+		"discord-akairo": "1Computer1/discord-akairo",
+		"discord.js": "discordjs/discord.js#adadb33970dd0ee67566814627c2abb92ffcff36",
+		"dotenv": "^7.0.0",
+		"lavalink": "^2.5.0",
+		"moment": "^2.24.0",
 		"moment-duration-format": "^2.2.2",
-		"node-opus": "^0.3.0",
-		"pg": "^6.4.2",
-		"pino": "^4.16.1",
-		"sequelize": "^4.37.7",
-		"uws": "^9.14.0",
-		"zlib-sync": "^0.1.4"
+		"pg": "^7.8.2",
+		"reflect-metadata": "^0.1.13",
+		"typeorm": "^0.2.15-rc.2",
+		"winston": "^3.2.1",
+		"winston-daily-rotate-file": "^3.8.0",
+		"ws": "^6.2.0"
 	},
 	"devDependencies": {
-		"env-cmd": "^7.0.0",
-		"eslint": "^4.19.1",
-		"eslint-config-aqua": "^4.0.0",
-		"sqlite3": "^4.0.0"
+		"@types/common-tags": "^1.8.0",
+		"@types/moment-duration-format": "^2.2.2",
+		"@types/node": "^11.11.3",
+		"@types/ws": "^6.0.1",
+		"fs-nextra": "^0.4.3",
+		"gulp": "^4.0.0",
+		"gulp-sourcemaps": "^2.6.5",
+		"gulp-typescript": "^5.0.1",
+		"merge2": "^1.2.3",
+		"tslint": "^5.14.0",
+		"tslint-config-fire": "^1.0.1",
+		"typescript": "^3.3.3333"
 	},
-	"engines": {
-		"node": ">=8.0.0"
-	},
-	"eslintConfig": {
-		"extends": "aqua"
+	"optionalDependencies": {
+		"@discordjs/uws": "^11.149.1",
+		"erlpack": "discordapp/erlpack",
+		"zlib-sync": "^0.1.4"
 	}
 }

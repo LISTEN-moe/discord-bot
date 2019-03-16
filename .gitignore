@@ -11,26 +11,15 @@ pids
 *.pid
 *.seed
 
-# IDE
-.vscode/bookmarks.json
-
-# Docker (experimental)
-docker/docker-compose.yml
-docker/docker-compose.development.yml
-docker/psql
-docker/redis
-
-# Authentication
+# Env
 .env
+.env_lavalink
 
-# Test files
-
-# Command files (unfinished)
-*.bak
+# Dist
+dist/
+typings/
 
 # Miscellaneous
 .tmp/
 .github/
-.travis.yml
-deploy/deploy.sh
-src/data/sqlite/listen.db
+ormconfig.json
