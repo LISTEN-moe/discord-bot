@@ -1,5 +1,4 @@
 import { Listener } from 'discord-akairo';
-import { ReferenceType } from 'rejects';
 
 export default class ReadyListener extends Listener {
 	public constructor() {
