@@ -1,4 +1,3 @@
-import HarunaClient from '../../client/HarunaClient';
 import { Listener } from 'discord-akairo';
 
 export default class ReconnectListener extends Listener {
