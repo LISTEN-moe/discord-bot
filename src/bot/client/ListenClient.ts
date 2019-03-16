@@ -82,9 +82,9 @@ export default class ListenClient extends AkairoClient {
 
 	public settings!: TypeORMProvider;
 
-	public webSocketManager: WebSocketManager = new WebSocketManager(this, 'asd', 'jpop');
+	public webSocketManager: WebSocketManager = new WebSocketManager(this, process.env.WEBSOCKET!, 'jpop');
 
-	public webSocketManagerKpop: WebSocketManager = new WebSocketManager(this, 'as', 'kpop');
+	public webSocketManagerKpop: WebSocketManager = new WebSocketManager(this, process.env.WEBSOCKET_KPOP!, 'kpop');
 
 	public radioInfo!: RadioInfo;
 
@@ -141,7 +141,7 @@ export default class ListenClient extends AkairoClient {
 		this.inhibitorHandler.loadAll();
 		this.listenerHandler.loadAll();
 
-		this.db = database.get('haruna');
+		this.db = database.get('listen');
 		await this.db.connect();
 		this.settings = new TypeORMProvider(this.db.getRepository(Setting));
 		await this.settings.init();
