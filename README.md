@@ -1,5 +1,7 @@
 # Listen.moe Discord Bot
-> 
+> .
+
+I'll get into filling this out later, gotta stay tuned for now.
 
 ## Contributing
 
@@ -11,7 +13,7 @@
 
 ## Author
 
-**Listen.moe** © [iCrawl](https://github.com/iCrawl).<br>
+**Listen.moe** © [iCrawl](https://github.com/iCrawl).  
 Authored and maintained by iCrawl.
 
 > GitHub [@iCrawl](https://github.com/iCrawl)

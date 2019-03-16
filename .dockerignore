@@ -16,25 +16,28 @@ pids
 
 # Docker (experimental)
 docker/
+deploy/
 Dockerfile
 .dockerignore
 
 # Authentication
 .env
+.env_lavalink
+.env.example
 
 # Test files
 
+# Command files (unfinished)
+*.bak
+
 # Miscellaneous
 .tmp/
+.github/
+.travis.yml
 LICENSE
-README.md
 
 # Git
 .github
 .git
 .gitattributes
 .gitignore
-
-# Deployment
-deploy/
-.travis.yml
