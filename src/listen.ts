@@ -5,7 +5,7 @@ const client = new ListenClient({ owner: process.env.OWNERS, token: process.env.
 
 client
 	.on('error', err => client.logger.error(`[CLIENT ERROR] ${err.message}`, err.stack))
-	.on('shardError', err => client.logger.error(`[SHARD ERROR] ${err.message}`, err.stack))
+	.on('shardError', (err, id) => client.logger.error(`[SHARD ${id} ERROR] ${err.message}`, err.stack))
 	.on('warn', warn => client.logger.warn(`[CLIENT WARN] ${warn}`));
 
 client.start();

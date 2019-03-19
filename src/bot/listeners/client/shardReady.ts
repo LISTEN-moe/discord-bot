@@ -9,7 +9,7 @@ export default class ShardReadyListener extends Listener {
 		});
 	}
 
-	public exec() {
-		this.client.logger.info(`[SHARD READY] ${this.client.user!.tag} (${this.client.user!.id})`);
+	public exec(id: number) {
+		this.client.logger.info(`[SHARD ${id} READY]`);
 	}
 }

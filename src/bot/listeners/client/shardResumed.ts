@@ -9,7 +9,7 @@ export default class ShardResumeListener extends Listener {
 		});
 	}
 
-	public exec(events: number) {
-		this.client.logger.info(`[RESUME] (replayed ${events} events)`);
+	public exec(id: number) {
+		this.client.logger.info(`[SHARD ${id} RESUMED]`);
 	}
 }

@@ -9,7 +9,7 @@ export default class ShardDisconnectedListener extends Listener {
 		});
 	}
 
-	public exec(event: any) {
-		this.client.logger.warn(`[DISCONNECT] (${event.code})`, event);
+	public exec(event: any, id: number) {
+		this.client.logger.warn(`[SHARD ${id} DISCONNECTED] (${event.code})`, event);
 	}
 }
