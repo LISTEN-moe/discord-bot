@@ -27,7 +27,7 @@
 	"dependencies": {
 		"common-tags": "^1.8.0",
 		"discord-akairo": "1Computer1/discord-akairo",
-		"discord.js": "discordjs/discord.js#adadb33970dd0ee67566814627c2abb92ffcff36",
+		"discord.js": "discordjs/discord.js#pull/3140/head",
 		"dotenv": "^7.0.0",
 		"lavalink": "^2.5.0",
 		"moment": "^2.24.0",

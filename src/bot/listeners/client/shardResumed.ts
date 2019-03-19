@@ -1,10 +1,10 @@
 import { Listener } from 'discord-akairo';
 
-export default class ResumeListener extends Listener {
+export default class ShardResumeListener extends Listener {
 	public constructor() {
-		super('resumed', {
+		super('shardResumed', {
 			emitter: 'client',
-			event: 'resumed',
+			event: 'shardResumed',
 			category: 'client'
 		});
 	}

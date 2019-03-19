@@ -1,10 +1,10 @@
 import { Listener } from 'discord-akairo';
 
-export default class ReconnectListener extends Listener {
+export default class ShardReconnectListener extends Listener {
 	public constructor() {
-		super('reconnecting', {
+		super('shardReconnecting', {
 			emitter: 'client',
-			event: 'reconnecting',
+			event: 'shardReconnecting',
 			category: 'client'
 		});
 	}

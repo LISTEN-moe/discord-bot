@@ -853,19 +853,19 @@ diff@^3.2.0:
 
 discord-akairo@1Computer1/discord-akairo:
   version "8.0.0-beta.1"
-  resolved "https://codeload.github.com/1Computer1/discord-akairo/tar.gz/0f92d696e9db0d76ebde3b9d3cff57dca4b1960c"
+  resolved "https://codeload.github.com/1Computer1/discord-akairo/tar.gz/650f7592f0f0926912bf10f89fa3fb2aa42ffe94"
 
-discord.js@discordjs/discord.js#adadb33970dd0ee67566814627c2abb92ffcff36:
+discord.js@discordjs/discord.js#pull/3140/head:
   version "12.0.0-dev"
-  resolved "https://codeload.github.com/discordjs/discord.js/tar.gz/adadb33970dd0ee67566814627c2abb92ffcff36"
+  resolved "https://codeload.github.com/discordjs/discord.js/tar.gz/cd8747c06899ce938addac13f893921c3fb7f902"
   dependencies:
-    form-data "^2.3.2"
-    node-fetch "^2.1.2"
-    pako "^1.0.0"
-    prism-media amishshah/prism-media
+    form-data "^2.3.3"
+    node-fetch "^2.3.0"
+    pako "^1.0.8"
+    prism-media "^1.0.0"
     setimmediate "^1.0.5"
-    tweetnacl "^1.0.0"
-    ws "^6.0.0"
+    tweetnacl "^1.0.1"
+    ws "^6.1.3"
 
 dotenv@^6.2.0:
   version "6.2.0"
@@ -1187,7 +1187,7 @@ for-own@^1.0.0:
   dependencies:
     for-in "^1.0.1"
 
-form-data@^2.3.2:
+form-data@^2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.3.3.tgz#dcce52c05f644f298c6a7ab936bd724ceffbf3a6"
   integrity sha512-1lLKB2Mu3aGP1Q/2eCOx0fNbRMe7XdwktwOruhfqqd0rIJWwN4Dh+E3hrPSlDCXnSR7UtZ1N38rVXm+6+MEhJQ==
@@ -2173,7 +2173,7 @@ nice-try@^1.0.4:
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
-node-fetch@^2.1.2:
+node-fetch@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
   integrity sha512-MOd8pV3fxENbryESLgVIeaGKrdl+uaYhCSSVkjeOb/31/njTpcis5aWfdqgNlHIrKOLRbMnfPINPOML2CIFeXA==
@@ -2451,16 +2451,16 @@ p-try@^1.0.0:
   integrity sha1-y8ec26+P1CKOE/Yh8rGiN8GyB7M=
 
 p-try@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
-  integrity sha512-hMp0onDKIajHfIkdRk3P4CdCmErkYAxxDtP3Wx/4nZ3aGlau2VKh3mZpcuFkH27WQkL/3WBCPOktzA9ZOAnMQQ==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.1.0.tgz#c1a0f1030e97de018bb2c718929d2af59463e505"
+  integrity sha512-H2RyIJ7+A3rjkwKC2l5GGtU4H1vkxKCAGsWasNVd0Set+6i4znxbWy6/j16YDPJDWxhsgZiKAstMEP8wCdSpjA==
 
 packet-reader@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/packet-reader/-/packet-reader-1.0.0.tgz#9238e5480dedabacfe1fe3f2771063f164157d74"
   integrity sha512-HAKu/fG3HpHFO0AA8WE8q2g+gBJaZ9MG7fcKk+IJPLTGAD6Psw4443l+9DGRbOIh3/aXr7Phy0TjilYivJo5XQ==
 
-pako@^1.0.0:
+pako@^1.0.8:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.10.tgz#4328badb5086a426aa90f541977d4955da5c9732"
   integrity sha512-0DTvPVU3ed8+HNXOu5Bs+o//Mbdj9VNQMUOe9oKCwh8l0GNwpTDMKCWbRjgtD291AWnkAgkqA/LOnQS8AmS1tw==
@@ -2669,9 +2669,10 @@ pretty-hrtime@^1.0.0:
   resolved "https://registry.yarnpkg.com/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz#b7e3ea42435a4c9b2759d99e0f201eb195802ee1"
   integrity sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
 
-prism-media@amishshah/prism-media:
+prism-media@^1.0.0:
   version "1.0.1"
-  resolved "https://codeload.github.com/amishshah/prism-media/tar.gz/9f7970f3497b12a26fb00a9d98fb3fc0a412a9ee"
+  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-1.0.1.tgz#3d033c214f9d79ca157bae7985938be65f521c02"
+  integrity sha512-Unmeibfk7b8wiiQFPlCC0GgCRaAejSpe2ElgfDkMi9ZmsqzeTbUnmiLNjyqONeKK+HMYINYHOgJFox5l7FU7YA==
 
 process-nextick-args@^1.0.7:
   version "1.0.7"
@@ -3173,9 +3174,9 @@ strip-ansi@^4.0.0:
     ansi-regex "^3.0.0"
 
 strip-ansi@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-5.1.0.tgz#55aaa54e33b4c0649a7338a43437b1887d153ec4"
-  integrity sha512-TjxrkPONqO2Z8QDCpeE2j6n0M6EwxzyDgzEeGp+FbdvaJAt//ClYi6W5my+3ROlC/hZX2KACUwDfK49Ka5eDvg==
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-5.2.0.tgz#8c9a536feb6afc962bdfa5b104a5091c1ad9c0ae"
+  integrity sha512-DuRs1gKbBqsMKIZlrffwlug8MHkcnpjs5VPmL1PAh+mA30U0DTotfDZ0d2UUsXpPmPmMMJ6W773MaA3J+lbiWA==
   dependencies:
     ansi-regex "^4.1.0"
 
@@ -3375,7 +3376,7 @@ tsutils@^2.29.0:
   dependencies:
     tslib "^1.8.1"
 
-tweetnacl@^1.0.0:
+tweetnacl@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.1.tgz#2594d42da73cd036bd0d2a54683dd35a6b55ca17"
   integrity sha512-kcoMoKTPYnoeS50tzoqjPY3Uv9axeuuFAZY9M/9zFnhoVvRfxz9K29IMPD7jGmt2c8SW7i3gT9WqDl2+nV7p4A==
@@ -3630,7 +3631,7 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
-ws@^6.0.0, ws@^6.2.0:
+ws@^6.0.0, ws@^6.1.3, ws@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/ws/-/ws-6.2.0.tgz#13806d9913b2a5f3cbb9ba47b563c002cbc7c526"
   integrity sha512-deZYUNlt2O4buFCa3t5bKLf8A7FPP/TVjwOeVNpw818Ma5nk4MLXls2eoEGS39o8119QIYxTrTDoPQ5B/gTD6w==
