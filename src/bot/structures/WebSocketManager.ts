@@ -13,7 +13,7 @@ export default class WebSocketManager {
 		try {
 			this.ws = new WebSocket(this.url);
 		} catch (error) {
-			setTimeout(this.connect.bind(this), 5000);
+			this.client.setTimeout(this.connect.bind(this), 5000);
 		}
 
 		this.ws!.on('open', this.onOpen.bind(this));
@@ -23,13 +23,13 @@ export default class WebSocketManager {
 	}
 
 	private heartbeat(ms: number) {
-		this.sendHeartbeat = setInterval(() => {
+		this.sendHeartbeat = this.client.setInterval(() => {
 			this.ws!.send(JSON.stringify({ op: 9 }));
 		}, ms);
 	}
 
 	private onOpen() {
-		clearInterval(this.sendHeartbeat!);
+		this.client.clearInterval(this.sendHeartbeat!);
 		this.ws!.send(JSON.stringify({ op: 0, d: { auth: '' } }));
 	}
 
@@ -128,8 +128,8 @@ export default class WebSocketManager {
 	}
 
 	private onClose() {
-		clearInterval(this.sendHeartbeat!);
-		setTimeout(this.connect.bind(this), 5000);
+		this.client.clearInterval(this.sendHeartbeat!);
+		this.client.setTimeout(this.connect.bind(this), 5000);
 	}
 
 	private currentSongGame() {
