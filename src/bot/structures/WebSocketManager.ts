@@ -22,6 +22,11 @@ export default class WebSocketManager {
 		this.ws!.on('error', this.client.logger.error);
 	}
 
+	public disconnect() {
+		if (!this.ws) return;
+		return this.ws.close(1000);
+	}
+
 	private heartbeat(ms: number) {
 		this.sendHeartbeat = this.client.setInterval(() => {
 			this.ws!.send(JSON.stringify({ op: 9 }));
@@ -127,7 +132,8 @@ export default class WebSocketManager {
 		}
 	}
 
-	private onClose() {
+	private onClose(code: number) {
+		if (code === 1000) return;
 		this.client.clearInterval(this.sendHeartbeat!);
 		this.client.setTimeout(this.connect.bind(this), 5000);
 	}
