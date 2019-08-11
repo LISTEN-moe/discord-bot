@@ -101,14 +101,16 @@ export default class ListenClient extends AkairoClient {
 		commandUtil: true,
 		commandUtilLifetime: 3e5,
 		defaultCooldown: 3000,
-		defaultPrompt: {
-			modifyStart: str => `${str}\n\nType \`cancel\` to cancel the command.`,
-			modifyRetry: str => `${str}\n\nType \`cancel\` to cancel the command.`,
-			timeout: 'Guess you took too long, the command has been cancelled.',
-			ended: "More than 3 tries and you still didn't quite get it. The command has been cancelled",
-			cancel: 'The command has been cancelled.',
-			retries: 3,
-			time: 30000
+		argumentDefaults: {
+			prompt: {
+				modifyStart: (_, str) => `${str}\n\nType \`cancel\` to cancel the command.`,
+				modifyRetry: (_, str) => `${str}\n\nType \`cancel\` to cancel the command.`,
+				timeout: 'Guess you took too long, the command has been cancelled.',
+				ended: "More than 3 tries and you still didn't quite get it. The command has been cancelled",
+				cancel: 'The command has been cancelled.',
+				retries: 3,
+				time: 30000
+			}
 		}
 	});
 	public inhibitorHandler = new InhibitorHandler(this, { directory: join(__dirname, '..', 'inhibitors') });

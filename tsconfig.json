@@ -3,7 +3,7 @@
 		"strict": true,
 		"module": "commonjs",
 		"moduleResolution": "node",
-		"target": "es2018",
+		"target": "es2017",
 		"lib": [
 			"esnext",
 			"esnext.array",
@@ -11,16 +11,14 @@
 			"esnext.intl",
 			"esnext.symbol"
 		],
-		"declaration": true,
-		"sourceMap": true,
+		"declaration": false,
 		"removeComments": false,
+		"inlineSourceMap": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
+		"sourceRoot": "/",
+		"outDir": "dist",
 		"alwaysStrict": true,
-		"allowSyntheticDefaultImports": true,
-		"pretty": true
-	},
-	"include": [
-		"./src"
-	]
+		"allowSyntheticDefaultImports": true
+	}
 }

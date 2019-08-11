@@ -2,13 +2,13 @@
 	"name": "discord-bot",
 	"version": "0.1.0",
 	"description": "The official Listen.moe discord bot",
-	"main": "src/listen.js",
+	"main": "dist/listen.js",
 	"author": "iCrawl <icrawltogo@gmail.com>",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
 		"prebuild": "yarn lint",
-		"build": "gulp",
+		"build": "rimraf dist && tsc",
 		"lint": "tslint -p tsconfig.json"
 	},
 	"repository": {
@@ -27,35 +27,31 @@
 	"dependencies": {
 		"common-tags": "^1.8.0",
 		"discord-akairo": "1Computer1/discord-akairo",
-		"discord.js": "discordjs/discord.js#pull/3140/head",
-		"dotenv": "^7.0.0",
-		"lavalink": "^2.5.0",
+		"discord.js": "discordjs/discord.js",
+		"dotenv": "^8.0.0",
+		"lavalink": "^2.8.1",
 		"moment": "^2.24.0",
-		"moment-duration-format": "^2.2.2",
-		"pg": "^7.8.2",
+		"moment-duration-format": "^2.3.2",
+		"pg": "^7.12.1",
 		"reflect-metadata": "^0.1.13",
-		"typeorm": "^0.2.15-rc.2",
+		"typeorm": "^0.2.18",
 		"winston": "^3.2.1",
-		"winston-daily-rotate-file": "^3.8.0",
-		"ws": "^6.2.0"
+		"winston-daily-rotate-file": "^3.10.0",
+		"ws": "^7.1.1"
 	},
 	"devDependencies": {
 		"@types/common-tags": "^1.8.0",
 		"@types/moment-duration-format": "^2.2.2",
-		"@types/node": "^11.11.6",
-		"@types/ws": "^6.0.1",
-		"fs-nextra": "^0.4.3",
-		"gulp": "^4.0.0",
-		"gulp-sourcemaps": "^2.6.5",
-		"gulp-typescript": "^5.0.1",
-		"merge2": "^1.2.3",
-		"tslint": "^5.14.0",
+		"@types/node": "^12.7.1",
+		"@types/ws": "^6.0.2",
+		"rimraf": "^2.6.3",
+		"tslint": "^5.18.0",
 		"tslint-config-fire": "^1.0.1",
-		"typescript": "^3.3.4000"
+		"typescript": "^3.5.3"
 	},
 	"optionalDependencies": {
-		"@discordjs/uws": "^11.149.1",
-		"erlpack": "discordapp/erlpack",
-		"zlib-sync": "^0.1.4"
+		"bufferutil": "^4.0.1",
+		"utf-8-validate": "^5.0.2",
+		"zlib-sync": "^0.1.5"
 	}
 }

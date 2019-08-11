@@ -1,9 +1,10 @@
 version: '2.4'
+
 services:
   bot:
     build:
       context: .
-    restart: always
+    restart: unless-stopped
     env_file:
       - ./.env
     network_mode: 'host'

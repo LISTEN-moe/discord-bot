@@ -10,6 +10,6 @@ export default class BlacklistInhibitor extends Inhibitor {
 
 	public exec(message: Message) {
 		const blacklist = this.client.settings.get('global', 'blacklist', []);
-		return blacklist.includes(message.author.id);
+		return blacklist.includes(message.author!.id);
 	}
 }
