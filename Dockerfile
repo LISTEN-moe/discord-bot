@@ -6,7 +6,7 @@ LABEL maintainer "iCrawl <icrawltogo@gmail.com>"
 
 WORKDIR /usr/src/Listen
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .yarnclean ./
 
 RUN apk add --update \
 && apk add --no-cache ca-certificates \
