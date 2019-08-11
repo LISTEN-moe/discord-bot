@@ -84,9 +84,9 @@ export default class ListenClient extends AkairoClient {
 
 	public settings!: TypeORMProvider;
 
-	public webSocketManager: WebSocketManager = new WebSocketManager(this, process.env.WEBSOCKET!, 'jpop');
+	public webSocketManager = new WebSocketManager(this, process.env.WEBSOCKET!, 'jpop');
 
-	public webSocketManagerKpop: WebSocketManager = new WebSocketManager(this, process.env.WEBSOCKET_KPOP!, 'kpop');
+	public webSocketManagerKpop = new WebSocketManager(this, process.env.WEBSOCKET_KPOP!, 'kpop');
 
 	public radioInfo!: RadioInfo;
 
