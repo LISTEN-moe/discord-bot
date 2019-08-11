@@ -110,7 +110,8 @@ export default class ListenClient extends AkairoClient {
 				cancel: 'The command has been cancelled.',
 				retries: 3,
 				time: 30000
-			}
+			},
+			otherwise: ''
 		}
 	});
 	public inhibitorHandler = new InhibitorHandler(this, { directory: join(__dirname, '..', 'inhibitors') });
