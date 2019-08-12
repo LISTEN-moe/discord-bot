@@ -1,6 +1,7 @@
 import { join } from 'path';
 import { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } from 'discord-akairo';
-import { Logger, createLogger, transports, format } from 'winston';
+import { logger } from '../../util/logger';
+import { Logger } from 'winston';
 import * as DailyRotateFile from 'winston-daily-rotate-file';
 import { Connection } from 'typeorm';
 import database from '../structures/Database';
@@ -57,28 +58,7 @@ interface RadioInfoKpop {
 }
 
 export default class ListenClient extends AkairoClient {
-	public logger = createLogger({
-		format: format.combine(
-			format.colorize({ level: true }),
-			format.timestamp({ format: 'YYYY/MM/DD HH:mm:ss' }),
-			format.printf((info: any) => {
-				const { timestamp, level, message, ...rest } = info;
-				return `[${timestamp}] ${level}: ${message}${Object.keys(rest).length ? `\n${JSON.stringify(rest, null, 2)}` : ''}`;
-			})
-		),
-		transports: [
-			new transports.Console({ level: 'info' }),
-			new DailyRotateFile({
-				format: format.combine(
-					format.timestamp(),
-					format.json()
-				),
-				level: 'debug',
-				filename: 'listen-%DATE%.log',
-				maxFiles: '14d'
-			})
-		]
-	});
+	public logger = logger;
 
 	public db!: Connection;
 
