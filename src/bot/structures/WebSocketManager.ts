@@ -19,7 +19,7 @@ export default class WebSocketManager {
 		this.ws!.on('open', this.onOpen.bind(this));
 		this.ws!.on('message', this.onMessage.bind(this));
 		this.ws!.on('close', this.onClose.bind(this));
-		this.ws!.on('error', this.client.logger.error);
+		this.ws!.on('error', (err: any) => this.client.logger.error(err));
 	}
 
 	public disconnect() {
