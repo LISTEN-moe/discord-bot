@@ -37,7 +37,7 @@
 		"typeorm": "^0.2.18",
 		"winston": "^3.2.1",
 		"winston-daily-rotate-file": "^3.10.0",
-		"ws": "^7.1.1"
+		"ws": "^7.1.2"
 	},
 	"devDependencies": {
 		"@types/common-tags": "^1.8.0",
