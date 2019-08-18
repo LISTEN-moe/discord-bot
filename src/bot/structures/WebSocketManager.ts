@@ -61,9 +61,9 @@ export default class WebSocketManager {
 			if (response.d.song.artists.length) {
 				artists = response.d.song.artists.map((elem: { id: number, name: string, nameRomaji: string }) => {
 					if (elem.nameRomaji) {
-						return `[${elem.nameRomaji}](https://listen.moe/music/artists/${elem.id})`;
+						return `[${elem.nameRomaji}](https://listen.moe/artists/${elem.id})`;
 					}
-					return `[${elem.name}](https://listen.moe/music/artists/${elem.id})`;
+					return `[${elem.name}](https://listen.moe/artists/${elem.id})`;
 				}).join(', ');
 			}
 
@@ -79,7 +79,7 @@ export default class WebSocketManager {
 
 			let album = '';
 			if (response.d.song.albums && response.d.song.albums.length > 0) {
-				album = `[${response.d.song.albums[0].name}](https://listen.moe/music/albums/${response.d.song.albums[0].id})`;
+				album = `[${response.d.song.albums[0].name}](https://listen.moe/albums/${response.d.song.albums[0].id})`;
 			}
 
 			let cover = 'https://listen.moe/public/images/icons/android-chrome-192x192.png';
