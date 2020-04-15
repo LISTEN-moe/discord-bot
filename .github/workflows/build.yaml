@@ -20,8 +20,8 @@ jobs:
 
       - name: Build, tag, and push container
         run: |
-          docker build --build-arg VERSION=${{ github.sha }} -f Dockerfile -t docker.pkg.github.com/LISTEN-moe/discord-bot/discord_bot:latest .
-          docker push docker.pkg.github.com/LISTEN-moe/discord-bot/discord_bot:latest
+          docker build --build-arg VERSION=${{ github.sha }} -f Dockerfile -t docker.pkg.github.com/listen-moe/discord-bot/discord_bot:latest .
+          docker push docker.pkg.github.com/listen-moe/discord-bot/discord_bot:latest
 
       - name: Logout of GitHub docker registry
         uses: azure/container-actions/docker-logout@master
