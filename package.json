@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"prebuild": "pnpm lint",
+		"prebuild": "pnpm run lint",
 		"build": "rimraf dist && tsc",
 		"lint": "eslint src --ext .ts",
 		"lint:fix": "eslint src --ext .ts --fix"
