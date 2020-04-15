@@ -6,6 +6,7 @@ export default class WebSocketManager {
 
 	private sendHeartbeat: NodeJS.Timer | null = null;
 
+	// eslint-disable-next-line
 	public constructor(public readonly client: ListenClient, public readonly url: string, public readonly type: string) {}
 
 	public connect() {
@@ -54,17 +55,21 @@ export default class WebSocketManager {
 
 			let artist = null;
 			if (response.d.song.artists.length) {
-				artist = response.d.song.artists.map((elem: { name: string, nameRomaji: string }) => elem.nameRomaji || elem.name).join(', ');
+				artist = response.d.song.artists
+					.map((elem: { name: string; nameRomaji: string }) => elem.nameRomaji || elem.name)
+					.join(', ');
 			}
 
 			let artists = null;
 			if (response.d.song.artists.length) {
-				artists = response.d.song.artists.map((elem: { id: number, name: string, nameRomaji: string }) => {
-					if (elem.nameRomaji) {
-						return `[${elem.nameRomaji}](https://listen.moe/artists/${elem.id})`;
-					}
-					return `[${elem.name}](https://listen.moe/artists/${elem.id})`;
-				}).join(', ');
+				artists = response.d.song.artists
+					.map((elem: { id: number; name: string; nameRomaji: string }) => {
+						if (elem.nameRomaji) {
+							return `[${elem.nameRomaji}](https://listen.moe/artists/${elem.id})`;
+						}
+						return `[${elem.name}](https://listen.moe/artists/${elem.id})`;
+					})
+					.join(', ');
 			}
 
 			let requester = '';
@@ -109,7 +114,7 @@ export default class WebSocketManager {
 					requestedBy: requester,
 					event,
 					eventName,
-					eventCover
+					eventCover,
 				};
 			} else {
 				this.client.radioInfo = {
@@ -124,7 +129,7 @@ export default class WebSocketManager {
 					requestedBy: requester,
 					event,
 					eventName,
-					eventCover
+					eventCover,
 				};
 			}
 
@@ -141,8 +146,8 @@ export default class WebSocketManager {
 	private currentSongGame() {
 		if (this.type === 'kpop') return;
 		let game = 'Loading data...';
-		if (Object.keys(this.client.radioInfo!).length) {
-			game = `${this.client.radioInfo!.artistName} - ${this.client.radioInfo!.songName}`;
+		if (Object.keys(this.client.radioInfo).length) {
+			game = `${this.client.radioInfo.artistName} - ${this.client.radioInfo.songName}`;
 		}
 		this.client.user!.setActivity(game);
 	}

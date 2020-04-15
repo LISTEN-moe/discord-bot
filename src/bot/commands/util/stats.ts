@@ -4,18 +4,19 @@ import { stripIndents } from 'common-tags';
 import * as moment from 'moment';
 import 'moment-duration-format';
 
-const { version } = require('../../../../package.json'); // tslint:disable-line
+// eslint-disable-next-line
+const { version } = require('../../../../package.json');
 
 export default class StatsCommand extends Command {
 	public constructor() {
 		super('stats', {
 			aliases: ['stats'],
 			description: {
-				content: 'Displays statistics about the bot.'
+				content: 'Displays statistics about the bot.',
 			},
 			category: 'util',
 			clientPermissions: ['EMBED_LINKS'],
-			ratelimit: 2
+			ratelimit: 2,
 		});
 	}
 
@@ -28,20 +29,20 @@ export default class StatsCommand extends Command {
 			.addField(
 				'❯ General Stats',
 				stripIndents`
-				• Guilds: ${this.client.guilds.size}
-				• Channels: ${this.client.channels.size}
+				• Guilds: ${this.client.guilds.cache.size}
+				• Channels: ${this.client.channels.cache.size}
 			`,
-				true
+				true,
 			)
 			.addField('❯ Version', `v${version}`, true)
 			.addField('❯ Source Code', '[View Here](https://github.com/LISTEN-moe/discord-bot)', true)
 			.addField(
 				'❯ Library',
 				'[discord.js](https://discord.js.org)[-akairo](https://github.com/1Computer1/discord-akairo)',
-				true
+				true,
 			)
 			.setThumbnail(this.client.user!.displayAvatarURL())
-			.setFooter(`© 2018-2019 ${this.client.users.get(this.client.config.owner!)!.tag}`);
+			.setFooter(`© 2018-2020 ${this.client.users.cache.get(this.client.config.owner!)!.tag}`);
 
 		return message.util!.send(embed);
 	}

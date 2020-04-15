@@ -1,23 +1,17 @@
-FROM node:10-alpine
-
+FROM node:12-alpine
 LABEL name "Listen"
 LABEL version "0.1.0"
 LABEL maintainer "iCrawl <icrawltogo@gmail.com>"
-
 WORKDIR /usr/src/Listen
-
-COPY package.json yarn.lock .yarnclean ./
-
+COPY package.json pnpm-lock.yaml ./
 RUN apk add --update \
 && apk add --no-cache ca-certificates \
 && apk add --no-cache --virtual .build-deps git curl build-base python g++ make \
-&& yarn install \
+&& curl -L https://unpkg.com/@pnpm/self-installer | node \
+&& pnpm i \
 && apk del .build-deps
-
 COPY . .
-
-RUN yarn build
-
+RUN pnpm run build
 ENV NODE_ENV= \
 	COMMAND_PREFIX= \
 	ID= \
@@ -29,5 +23,4 @@ ENV NODE_ENV= \
 	WEBSOCKET_KPOP= \
 	DB= \
 	RADIO_CHANNELS=
-
 CMD ["node", "dist/listen.js"]

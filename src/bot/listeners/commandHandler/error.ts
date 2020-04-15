@@ -5,7 +5,7 @@ export default class CommandErrorListener extends Listener {
 		super('error', {
 			emitter: 'commandHandler',
 			event: 'error',
-			category: 'commandHandler'
+			category: 'commandHandler',
 		});
 	}
 

@@ -5,7 +5,7 @@ export default class ShardReconnectListener extends Listener {
 		super('shardReconnecting', {
 			emitter: 'client',
 			event: 'shardReconnecting',
-			category: 'client'
+			category: 'client',
 		});
 	}
 

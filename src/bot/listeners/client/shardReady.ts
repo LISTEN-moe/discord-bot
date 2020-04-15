@@ -5,7 +5,7 @@ export default class ShardReadyListener extends Listener {
 		super('shardReady', {
 			emitter: 'client',
 			event: 'shardReady',
-			category: 'client'
+			category: 'client',
 		});
 	}
 

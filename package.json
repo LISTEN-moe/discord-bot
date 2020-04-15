@@ -7,9 +7,10 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"prebuild": "yarn lint",
-		"build": "rimraf dist && tsc -p tsconfig.json",
-		"lint": "tslint -p tsconfig.json"
+		"prebuild": "pnpm lint",
+		"build": "rimraf dist && tsc",
+		"lint": "eslint src --ext .ts",
+		"lint:fix": "eslint src --ext .ts --fix"
 	},
 	"repository": {
 		"type": "git",
@@ -28,30 +29,44 @@
 		"common-tags": "^1.8.0",
 		"discord-akairo": "1Computer1/discord-akairo",
 		"discord.js": "discordjs/discord.js",
-		"dotenv": "^8.0.0",
-		"lavalink": "^2.8.1",
+		"dotenv": "^8.2.0",
+		"lavalink": "^2.10.0",
 		"moment": "^2.24.0",
 		"moment-duration-format": "^2.3.2",
-		"pg": "^7.12.1",
+		"pg": "^8.0.2",
 		"reflect-metadata": "^0.1.13",
-		"typeorm": "^0.2.18",
+		"tslib": "^1.11.1",
+		"typeorm": "^0.2.24",
 		"winston": "^3.2.1",
-		"winston-daily-rotate-file": "^3.10.0",
-		"ws": "^7.1.2"
+		"winston-daily-rotate-file": "^4.4.2",
+		"ws": "^7.2.3"
 	},
 	"devDependencies": {
 		"@types/common-tags": "^1.8.0",
 		"@types/moment-duration-format": "^2.2.2",
-		"@types/node": "^12.7.1",
-		"@types/ws": "^6.0.2",
-		"rimraf": "^2.6.3",
-		"tslint": "^5.18.0",
-		"tslint-config-fire": "^1.0.1",
-		"typescript": "^3.5.3"
+		"@types/node": "^13.11.1",
+		"@types/ws": "^7.2.4",
+		"@typescript-eslint/eslint-plugin": "^2.28.0",
+		"@typescript-eslint/parser": "^2.28.0",
+		"eslint": "^6.8.0",
+		"eslint-config-marine": "^6.0.0",
+		"eslint-config-prettier": "^6.10.1",
+		"eslint-plugin-prettier": "^3.1.3",
+		"prettier": "^2.0.4",
+		"rimraf": "^3.0.2",
+		"typescript": "^3.8.3"
 	},
 	"optionalDependencies": {
 		"bufferutil": "^4.0.1",
 		"utf-8-validate": "^5.0.2",
-		"zlib-sync": "^0.1.5"
+		"zlib-sync": "^0.1.6"
+	},
+	"eslintConfig": {
+		"extends": "marine/prettier/node"
+	},
+	"renovate": {
+		"extends": [
+			"teal"
+		]
 	}
 }

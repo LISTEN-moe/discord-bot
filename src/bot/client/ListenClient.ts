@@ -2,7 +2,6 @@ import { join } from 'path';
 import { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } from 'discord-akairo';
 import { logger } from '../../util/logger';
 import { Logger } from 'winston';
-import * as DailyRotateFile from 'winston-daily-rotate-file';
 import { Connection } from 'typeorm';
 import database from '../structures/Database';
 import { Setting } from '../models/Settings';
@@ -89,11 +88,12 @@ export default class ListenClient extends AkairoClient {
 				ended: "More than 3 tries and you still didn't quite get it. The command has been cancelled",
 				cancel: 'The command has been cancelled.',
 				retries: 3,
-				time: 30000
+				time: 30000,
 			},
-			otherwise: ''
-		}
+			otherwise: '',
+		},
 	});
+
 	public inhibitorHandler = new InhibitorHandler(this, { directory: join(__dirname, '..', 'inhibitors') });
 
 	public listenerHandler = new ListenerHandler(this, { directory: join(__dirname, '..', 'listeners') });
@@ -102,15 +102,19 @@ export default class ListenClient extends AkairoClient {
 
 	public constructor(config: ListenOptions) {
 		// @ts-ignore
-		super({ ownerID: config.owner }, {
-			disableEveryone: true,
-			disabledEvents: ['TYPING_START'],
-			shardCount: 'auto'
-		});
+		super(
+			{ ownerID: config.owner },
+			{
+				disableMentions: 'all',
+				shards: 'auto',
+			},
+		);
 
 		this.config = config;
 
-		process.on('unhandledRejection', (err: any) => this.logger.error(`[UNHANDLED REJECTION] ${err.message}`, err.stack));
+		process.on('unhandledRejection', (err: any) =>
+			this.logger.error(`[UNHANDLED REJECTION] ${err.message}`, err.stack),
+		);
 	}
 
 	private async _init() {
@@ -119,7 +123,7 @@ export default class ListenClient extends AkairoClient {
 		this.listenerHandler.setEmitters({
 			commandHandler: this.commandHandler,
 			inhibitorHandler: this.inhibitorHandler,
-			listenerHandler: this.listenerHandler
+			listenerHandler: this.listenerHandler,
 		});
 
 		this.commandHandler.loadAll();

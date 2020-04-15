@@ -3,7 +3,11 @@
 		"strict": true,
 		"module": "commonjs",
 		"moduleResolution": "node",
-		"target": "es2017",
+		"declaration": false,
+		"removeComments": false,
+		"alwaysStrict": true,
+		"pretty": true,
+		"target": "es2019",
 		"lib": [
 			"esnext",
 			"esnext.array",
@@ -11,13 +15,14 @@
 			"esnext.intl",
 			"esnext.symbol"
 		],
-		"declaration": false,
-		"removeComments": false,
-		"inlineSourceMap": true,
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
+		"sourceMap": true,
+		"inlineSources": true,
 		"sourceRoot": "/",
 		"outDir": "dist",
-		"alwaysStrict": true
+		"incremental": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"noEmitHelpers": true,
+		"importHelpers": true
 	}
 }

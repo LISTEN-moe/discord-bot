@@ -5,7 +5,7 @@ export default class ShardDisconnectedListener extends Listener {
 		super('shardDisconnected', {
 			emitter: 'client',
 			event: 'shardDisconnected',
-			category: 'client'
+			category: 'client',
 		});
 	}
 

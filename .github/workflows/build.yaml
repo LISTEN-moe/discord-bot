@@ -1,0 +1,27 @@
+name: Container
+on:
+  push:
+    branches:
+      - master
+jobs:
+  publish:
+    name: Build, tag, and publish container
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub docker registry
+        uses: azure/container-actions/docker-login@master
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PAT }}
+          login-server: 'docker.pkg.github.com'
+
+      - name: Build, tag, and push container
+        run: |
+          docker build --build-arg VERSION=${{ github.sha }} -f Dockerfile -t docker.pkg.github.com/LISTEN-moe/discord-bot/discord_bot:latest .
+          docker push docker.pkg.github.com/LISTEN-moe/discord-bot/discord_bot:latest
+
+      - name: Logout of GitHub docker registry
+        uses: azure/container-actions/docker-logout@master

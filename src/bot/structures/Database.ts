@@ -6,7 +6,7 @@ connectionManager.create({
 	name: 'listen',
 	type: 'postgres',
 	url: process.env.DB,
-	entities: [Setting]
+	entities: [Setting],
 });
 
 export default connectionManager;
