@@ -7,6 +7,7 @@ import database from '../structures/Database';
 import { Setting } from '../models/Settings';
 import TypeORMProvider from '../structures/SettingsProvider';
 import WebSocketManager from '../structures/WebSocketManager';
+import { RadioInfo, RadioInfoKpop } from '../../types/RadioInfo';
 
 declare module 'discord-akairo' {
 	interface AkairoClient {
@@ -25,23 +26,6 @@ interface ListenOptions {
 	owner?: string;
 	token?: string;
 }
-
-interface RadioInfo {
-	songName: string;
-	artistName?: string;
-	artistList?: string;
-	artistCount: number;
-	sourceName: string;
-	albumName: string;
-	albumCover: string;
-	listeners: number;
-	requestedBy: string;
-	event: boolean;
-	eventName?: string;
-	eventCover?: string;
-}
-
-interface RadioInfoKpop extends RadioInfo {}
 
 export default class ListenClient extends AkairoClient {
 	public logger = logger;
