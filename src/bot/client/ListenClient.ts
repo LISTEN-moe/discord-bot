@@ -41,20 +41,7 @@ interface RadioInfo {
 	eventCover?: string;
 }
 
-interface RadioInfoKpop {
-	songName: string;
-	artistName?: string;
-	artistList?: string;
-	artistCount: number;
-	sourceName: string;
-	albumName: string;
-	albumCover: string;
-	listeners: number;
-	requestedBy: string;
-	event: boolean;
-	eventName?: string;
-	eventCover?: string;
-}
+interface RadioInfoKpop extends RadioInfo {}
 
 export default class ListenClient extends AkairoClient {
 	public logger = logger;
