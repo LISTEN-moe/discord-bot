@@ -1,5 +1,6 @@
 import * as WebSocket from 'ws';
 import ListenClient from '../client/ListenClient';
+import { RadioInfo, RadioInfoKpop } from '../../types/RadioInfo';
 
 export default class WebSocketManager {
 	private ws: WebSocket | null = null;
@@ -101,36 +102,25 @@ export default class WebSocketManager {
 				eventCover = response.d.event.image;
 			}
 
+			const info: RadioInfo | RadioInfoKpop = {
+				songName: response.d.song.title,
+				artistName: artist,
+				artistList: artists,
+				artistCount: response.d.song.artists.length,
+				sourceName: source,
+				albumName: album,
+				albumCover: cover,
+				listeners: response.d.listeners,
+				requestedBy: requester,
+				event,
+				eventName,
+				eventCover,
+			};
+
 			if (this.type === 'kpop') {
-				this.client.radioInfoKpop = {
-					songName: response.d.song.title,
-					artistName: artist,
-					artistList: artists,
-					artistCount: response.d.song.artists.length,
-					sourceName: source,
-					albumName: album,
-					albumCover: cover,
-					listeners: response.d.listeners,
-					requestedBy: requester,
-					event,
-					eventName,
-					eventCover,
-				};
+				this.client.radioInfoKpop = info;
 			} else {
-				this.client.radioInfo = {
-					songName: response.d.song.title,
-					artistName: artist,
-					artistList: artists,
-					artistCount: response.d.song.artists.length,
-					sourceName: source,
-					albumName: album,
-					albumCover: cover,
-					listeners: response.d.listeners,
-					requestedBy: requester,
-					event,
-					eventName,
-					eventCover,
-				};
+				this.client.radioInfo = info;
 			}
 
 			this.currentSongGame();
